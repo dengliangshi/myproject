@@ -1,0 +1,5 @@
+<p>Dear {{ user.username}},</p>
+<p>Your register request has been confirmed by admin, and you can <a href="{{ url_for('auth.login', _external=True) }}">login</a> now.</p>
+<p>Sincerely,</p>
+<p>The MyProject Team</p>
+<p><small>Note: replies to this email address are not monitored.</small></p>

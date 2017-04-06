@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} MyProject - Profile{% endblock %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+        <div class="page-header">
+            <h1>Welcome, {{ user.username }}!</h1>
+        </div>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Username:</td>
+                    <td>{{ user.username }}</td>
+                    <td><a class="btn btn-default btn-xs" href="/change_username" role="button">Change</a></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>{{ user.email }}</td>
+                    <td><a class="btn btn-default btn-xs" href="/change_email_request" role="button">Change</a></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td>No Access</td>
+                    <td>
+                    <a class="btn btn-default btn-xs" href="/change_password" role="button">Change</a></td>
+                </tr>
+                <tr>
+                    <td>Role:</td>
+                    <td>{{ user.role.name }}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    {% if user.confirmed %}
+                    <td>Confirmed</td>
+                    {% else %}
+                    <td>Unconfirmed</td>
+                    {% endif %}
+                    <td></td>
+                </tr>
+           </tbody>
+        </table>
+        {% if admin %}
+        <a class="btn btn-default" href="/manage" role="button">Manage Users</a></td>
+        {% endif %}
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+{% endblock %}

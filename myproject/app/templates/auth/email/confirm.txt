@@ -1,0 +1,9 @@
+Dear Adminstrator,
+
+A new user "{{ user.username }}" has submitted a register request, please login to deal with it.
+
+Sincerely,
+
+The MyProject Team
+
+Note: replies to this email address are not monitored.

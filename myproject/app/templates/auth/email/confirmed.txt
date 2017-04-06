@@ -1,0 +1,9 @@
+Dear {{ user.username}},
+
+Your register request has been confirmed by admin, and you can login now.
+
+Sincerely,
+
+The MyProject Team
+
+Note: replies to this email address are not monitored.

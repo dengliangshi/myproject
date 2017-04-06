@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}MyProject - Manage{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Manage Users</h1>
+</div>
+{% if users %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-xs">{{ user.role.name }}</button>
+                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                    {% for role in roles %}
+                        <li><a href="/change_role/{{ user.id }}/{{ role.name }}">{{ role.name }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </td>
+        {% if user.confirmed %}
+            <td>Confirmed</td>
+        {% else %}
+            <td><a class="btn btn-default btn-xs" href="/confirm/{{ user.id }}" role="button">Active</a></td>
+        {% endif %}
+            <td><a class="btn btn-default btn-xs" href="/delete/{{ user.id }}" role="button">Delete</a></td>
+        </tr>
+    {% endfor %}
+   </tbody>
+</table>
+{% else %}
+No Users!
+{% endif %}
+{% endblock %}
